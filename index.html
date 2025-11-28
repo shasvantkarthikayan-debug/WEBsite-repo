@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="favicon.png">
-
   <meta charset="UTF-8" />
   <title>Face Recognition Using Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,10 +16,31 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: #050818;
       color: #f9fafb;
       line-height: 1.6;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes subtleFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
     }
 
     /* COVER */
@@ -35,42 +54,36 @@
       text-align: center;
       color: white;
       border-bottom: 4px solid #38bdf8;
+      animation: fadeDown 0.8s ease-out;
     }
 
+    /* LOGO CIRCLE WITH IMAGE */
     .logo-circle {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #0f172a;
-      border: 4px solid #38bdf8;
+      overflow: hidden; /* hides excess */
       margin-bottom: 18px;
+      animation: subtleFloat 3s ease-in-out infinite;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .cover h1 {
       font-size: 34px;
       font-weight: 800;
-      letter-spacing: 1px;
     }
 
-    .cover p {
-      font-size: 16px;
-      opacity: 0.9;
-      margin-top: 8px;
-    }
-
-    /* NAV */
     header {
       position: sticky;
       top: 0;
       z-index: 10;
       backdrop-filter: blur(10px);
-      background: rgba(5, 8, 24, 0.9);
+      background: rgba(5, 8, 24, 0.92);
       border-bottom: 1px solid #111827;
     }
 
@@ -83,28 +96,33 @@
       align-items: center;
     }
 
-    .logo {
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 18px;
-    }
-
-    .logo span {
-      color: #38bdf8;
-    }
-
     nav a {
       margin-left: 16px;
-      text-decoration: none;
       font-size: 14px;
       color: #9ca3af;
+      text-decoration: none;
+      position: relative;
     }
 
     nav a:hover {
-      color: #e5e7eb;
+      color: #fff;
     }
 
-    /* CONTENT */
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      transition: .2s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
     main {
       max-width: 1000px;
       margin: 0 auto;
@@ -113,88 +131,35 @@
 
     section {
       margin-top: 40px;
+      animation: fadeUp .7s ease-out;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      grid-template-columns: 2fr 1.5fr;
       gap: 24px;
-      align-items: center;
       margin-top: 24px;
     }
 
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #1f2933;
-      color: #9ca3af;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    h1 span {
-      color: #38bdf8;
-    }
-
-    .subtitle {
-      color: #9ca3af;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-
-    .btn-row {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: #38bdf8;
-      color: #020617;
-      font-weight: 600;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid #374151;
-      color: #e5e7eb;
-    }
-
     .card {
+      padding: 18px;
       border-radius: 16px;
-      border: 1px solid #111827;
       background: radial-gradient(circle at top, #0b1120, #020617);
-      padding: 16px 18px;
-      font-size: 13px;
-      color: #d1d5db;
+      border: 1px solid #111827;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 16px 35px rgba(0,0,0,0.6);
     }
 
     .pill {
       display: inline-block;
-      font-size: 11px;
       padding: 3px 9px;
-      border-radius: 999px;
       border: 1px solid #1f2933;
-      margin: 2px 4px 2px 0;
+      border-radius: 999px;
+      font-size: 11px;
       color: #9ca3af;
     }
 
@@ -207,114 +172,79 @@
       width: 40px;
       height: 2px;
       background: #38bdf8;
-      border-radius: 999px;
       margin-bottom: 14px;
-    }
-
-    p {
-      font-size: 14px;
-      color: #d1d5db;
-    }
-
-    ul {
-      margin-top: 8px;
-      padding-left: 18px;
-      font-size: 14px;
-      color: #d1d5db;
-    }
-
-    li {
-      margin-bottom: 6px;
+      border-radius: 50px;
     }
 
     .code-block {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
+      margin-top: 12px;
       background: #020617;
       border: 1px solid #111827;
-      font-family: "JetBrains Mono", "Fira Code", monospace;
-      font-size: 12px;
-      overflow-x: auto;
+      padding: 12px;
+      border-radius: 12px;
       white-space: pre;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-      margin-top: 12px;
+      font-size: 12px;
+      font-family: "JetBrains Mono";
+      overflow-x: auto;
     }
 
     footer {
-      border-top: 1px solid #111827;
-      padding: 12px 20px 18px;
       text-align: center;
-      font-size: 11px;
+      padding: 12px;
+      margin-top: 40px;
       color: #6b7280;
-      margin-top: 32px;
+      border-top: 1px solid #111827;
     }
 
+    @media(max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <!-- COVER -->
   <div class="cover">
-    <div class="logo-circle">FR</div>
-
+    <div class="logo-circle">
+      <img src="logo-fr.png" alt="FR Logo">
+    </div>
     <h1>FACE RECOGNITION USING PYTHON</h1>
-    <p>A Computer Science Project using MediaPipe by Shasvant &amp; Sreepal</p>
+    <p>A Computer Science Project using MediaPipe by Shasvant & Sreepal</p>
   </div>
 
   <!-- NAV -->
   <header>
     <div class="nav">
-      <div class="logo">Project: <span>Face Recognition</span></div>
+      <div class="logo">Project: <span style="color:#38bdf8;">Face Recognition</span></div>
       <nav>
         <a href="#intro">Intro</a>
         <a href="#working">Working</a>
         <a href="#code">Code</a>
         <a href="#result">Results</a>
         <a href="#about">About</a>
-        <a href="https://github.com/shasvantkarthikayan-debug/face-recogintion"
-           target="_blank">GitHub</a>
+        <a href="https://github.com/shasvantkarthikayan-debug/face-recogintion" target="_blank">GitHub</a>
       </nav>
     </div>
   </header>
 
   <!-- CONTENT -->
   <main>
-
     <!-- INTRO -->
     <section id="intro" class="hero">
       <div>
-        <div class="tag">Python · MediaPipe · OpenCV</div>
-        <h1>Face Recognition <span>Overview</span></h1>
+        <div class="pill">Python · MediaPipe · OpenCV</div>
+        <h1>Face Recognition <span style="color:#38bdf8;">Overview</span></h1>
         <p class="subtitle">
-          Our system uses MediaPipe and Python to detect and track faces in real time
-          and recognise people using stored face data.
+          Our system uses MediaPipe and Python to detect and recognise faces in real time.
         </p>
-        <div class="btn-row">
-          <a href="#working" class="btn btn-primary">See Working</a>
-          <a href="#code" class="btn btn-outline">Code Overview</a>
-          <a href="https://github.com/shasvantkarthikayan-debug/face-recogintion"
-             target="_blank" class="btn btn-outline">View on GitHub</a>
-        </div>
       </div>
 
       <div class="card">
         <h3>Project Summary</h3>
         <p>
-          We use MediaPipe for fast and efficient face detection, OpenCV for webcam capture,
-          and a dataset of known faces for recognition.
+          MediaPipe detects faces instantly while OpenCV processes the webcam feed.
+          Recognition compares face encodings with stored data.
         </p>
-        <div style="margin-top: 10px;">
-          <span class="pill">Python</span>
-          <span class="pill">OpenCV</span>
-          <span class="pill">MediaPipe</span>
-          <span class="pill">AI</span>
-        </div>
       </div>
     </section>
 
@@ -323,44 +253,18 @@
       <h2>How It Works</h2>
       <div class="underline"></div>
 
-      <div class="two-col">
-        <div>
-          <h3>1. Face Detection (MediaPipe)</h3>
-          <ul>
-            <li>Camera input captured with OpenCV.</li>
-            <li>Every frame processed with MediaPipe Face Detection.</li>
-            <li>MediaPipe finds face box + keypoints.</li>
-            <li>Box drawn around detected face.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>2. Face Recognition</h3>
-          <ul>
-            <li>Dataset of known faces is created.</li>
-            <li>Encodings stored for each known person.</li>
-            <li>New face encoding compared with stored ones.</li>
-            <li>Best match = identity displayed.</li>
-          </ul>
-        </div>
-      </div>
+      <ul>
+        <li>MediaPipe detects the face & landmarks</li>
+        <li>OpenCV captures webcam frames</li>
+        <li>Face encodings are extracted</li>
+        <li>Recognition compares new encodings with known ones</li>
+      </ul>
     </section>
 
-    <!-- CODE OVERVIEW -->
+    <!-- CODE -->
     <section id="code">
-      <h2>BASIC OVERVIEW OF CODE <small style="color:#9ca3af;">(Real code is in our GitHub page)</small></h2>
+      <h2>BASIC OVERVIEW OF CODE <small style="color:#9ca3af;">(Real code is in our GitHub)</small></h2>
       <div class="underline"></div>
-
-      <p>The actual full code is in our GitHub repo.  
-         Below is a simple overview of our detection pipeline:</p>
-
-      <p style="margin-top:10px;">
-        🔗 GitHub Repo:
-        <a href="https://github.com/shasvantkarthikayan-debug/face-recogintion"
-           target="_blank" style="color:#38bdf8;">
-          github.com/shasvantkarthikayan-debug/face-recogintion
-        </a>
-      </p>
 
       <div class="code-block">
 import cv2
@@ -371,18 +275,18 @@ mp_draw = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture(0)
 
-with mp_face.FaceDetection(model_selection=0, min_detection_confidence=0.5) as face_detection:
+with mp_face.FaceDetection(model_selection=0, min_detection_confidence=0.5) as face_det:
     while True:
-        success, frame = cap.read()
-        if not success:
+        ok, frame = cap.read()
+        if not ok:
             break
 
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        results = face_detection.process(rgb)
+        res = face_det.process(rgb)
 
-        if results.detections:
-            for detection in results.detections:
-                mp_draw.draw_detection(frame, detection)
+        if res.detections:
+            for d in res.detections:
+                mp_draw.draw_detection(frame, d)
 
         cv2.imshow("MediaPipe Face Detection", frame)
 
@@ -398,11 +302,11 @@ cv2.destroyAllWindows()
     <section id="result">
       <h2>Results</h2>
       <div class="underline"></div>
+
       <ul>
-        <li>MediaPipe detects faces instantly.</li>
-        <li>Tracking stays smooth even with movement.</li>
-        <li>Recognition improves with clear training images.</li>
-        <li>Low light reduces accuracy slightly.</li>
+        <li>Fast real‑time face detection</li>
+        <li>Smooth tracking</li>
+        <li>Good accuracy with clear training images</li>
       </ul>
     </section>
 
@@ -410,12 +314,8 @@ cv2.destroyAllWindows()
     <section id="about">
       <h2>About the Students</h2>
       <div class="underline"></div>
-      <p>
-        Project by: <strong>Shasvant &amp; Sreepal</strong><br />
-        Grade: <strong>8th</strong>
-      </p>
+      <p>Project by: <strong>Shasvant & Sreepal</strong> — Grade 8</p>
     </section>
-
   </main>
 
   <footer>
