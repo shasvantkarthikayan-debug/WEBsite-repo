@@ -1,189 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FacePass — Face Recognition Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FacePass – Face Recognition</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, sans-serif;
-      background: #0b0e17;
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
+<style>
+  :root {
+    --bg: #0a0d14;
+    --panel: #0f131d;
+    --border: #1d2434;
+    --neon: #00e5ff;
+    --text: #d8e2f0;
+    --text-dim: #8aa0b5;
+  }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+  }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
-      font-weight: 800;
-      color: #f1f5f9;
-    }
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px 80px 20px;
+  }
 
-    h2 {
-      font-size: 22px;
-      margin-top: 32px;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: #f1f5f9;
-    }
+  h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--neon);
+  }
 
-    .subtitle {
-      opacity: 0.8;
-      margin-bottom: 20px;
-    }
+  h2 {
+    font-size: 22px;
+    margin-top: 36px;
+    margin-bottom: 10px;
+    color: var(--neon);
+  }
 
-    .section {
-      margin-top: 24px;
-    }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+  }
 
-    .thumb {
-      width: 100%;
-      max-width: 700px;
-      display: block;
-      margin: 20px auto;
-      border-radius: 8px;
-      border: 1px solid #1f2937;
-      cursor: pointer;
-    }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-top: 18px;
+  }
 
-    .inline-block {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      background: #1e293b;
-      color: #93c5fd;
-      margin-right: 6px;
-      margin-bottom: 6px;
-    }
+  .stack-tag {
+    display: inline-block;
+    border: 1px solid var(--neon);
+    color: var(--neon);
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 4px 10px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
 
-    ul {
-      margin-top: 6px;
-      margin-bottom: 6px;
-    }
+  ul {
+    margin: 6px 0 6px 20px;
+    padding: 0;
+  }
 
-    a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
+  a {
+    color: var(--neon);
+    text-decoration: none;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
+  }
 
-    footer {
-      text-align: center;
-      opacity: 0.5;
-      margin-top: 40px;
-      padding-bottom: 20px;
-      font-size: 13px;
-    }
-  </style>
+  .thumb {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 16px auto 10px auto;
+    border-radius: 8px;
+    border: 1px solid var(--neon);
+    cursor: pointer;
+  }
+
+  .footer {
+    text-align: center;
+    opacity: .4;
+    margin-top: 40px;
+    font-size: 13px;
+  }
+
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>FacePass</h1>
-    <div class="subtitle">Face Recognition System using face-api.js & Flask</div>
 
-    <div class="section">
-      <h2>Overview</h2>
-      <p>
-        FacePass is a browser-based face recognition system. The client uses <strong>face-api.js</strong>
-        for face detection & embedding, while a <strong>Flask</strong> backend performs identity matching using stored face embeddings.
-      </p>
-    </div>
+<div class="container">
+  <h1>FacePass – Face Recognition</h1>
+  <div class="subtitle">A browser-based facial recognition system using face-api.js & Flask</div>
 
-    <div class="section">
-      <h2>Tech Stack</h2>
-      <div class="inline-block">face-api.js</div>
-      <div class="inline-block">Flask</div>
-      <div class="inline-block">WebRTC</div>
-      <div class="inline-block">Python</div>
-      <div class="inline-block">HTML/CSS</div>
-    </div>
-
-    <div class="section">
-      <h2>Demo</h2>
-      <a href="https://youtu.be/CW7YAbGvszA" target="_blank">
-        <img src="https://img.youtube.com/vi/CW7YAbGvszA/maxresdefault.jpg" alt="FacePass Demo" class="thumb">
-      </a>
-      <p style="opacity:0.6;font-size:13px;text-align:center;">
-        Click to watch the demo on YouTube.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How It Works</h2>
-      <p>
-        FacePass splits processing between the browser and backend for efficient real-time face recognition:
-      </p>
-      <p><strong>Client (Browser):</strong></p>
-      <ul>
-        <li>Accesses webcam using WebRTC</li>
-        <li>Detects face regions via face-api.js</li>
-        <li>Generates 128-D face embeddings</li>
-        <li>Sends embeddings to Flask backend</li>
-      </ul>
-
-      <p><strong>Backend (Flask):</strong></p>
-      <ul>
-        <li>Receives embedding vectors</li>
-        <li>Compares with stored embeddings</li>
-        <li>Computes Euclidean distance similarity</li>
-        <li>Returns predicted identity</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Architecture</h2>
-      <p><strong>Pipeline:</strong></p>
-      <ul>
-        <li>Camera → Embedding (face-api.js)</li>
-        <li>Embedding → Recognition (Flask)</li>
-        <li>Flask → Recognition result returned to client</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Results</h2>
-      <ul>
-        <li>Real-time detection & recognition</li>
-        <li>Stable performance under normal lighting</li>
-        <li>Accuracy depends on face angle & clarity</li>
-        <li>Low compute load on client-side</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Repository</h2>
-      <p>
-        <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
-          GitHub Repository →
-        </a>
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Authors</h2>
-      <p>
-        Project by <strong>Shasvant &amp; Sreepal</strong><br>
-        Grade: <strong>8th</strong>
-      </p>
-    </div>
-
-    <footer>
-      © FacePass — School Project Presentation
-    </footer>
+  <div class="panel">
+    <h2>Overview</h2>
+    <p>
+      FacePass performs real-time facial recognition through a hybrid browser + backend pipeline.
+      The browser uses <strong>face-api.js</strong> for face embedding extraction, while
+      <strong>Flask</strong> handles recognition using stored embeddings.
+    </p>
   </div>
+
+  <div class="panel">
+    <h2>Stack</h2>
+    <div>
+      <span class="stack-tag">face-api.js</span>
+      <span class="stack-tag">Flask</span>
+      <span class="stack-tag">WebRTC</span>
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">HTML/CSS</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Demo</h2>
+    <a href="https://youtu.be/CW7YAbGvszA" target="_blank">
+      <img src="https://img.youtube.com/vi/CW7YAbGvszA/maxresdefault.jpg" class="thumb" alt="FacePass Demo">
+    </a>
+    <div style="text-align:center;color:var(--text-dim);font-size:13px;">
+      Click to watch demo on YouTube.
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>How It Works</h2>
+    <p><strong>Client (Browser):</strong></p>
+    <ul>
+      <li>Webcam accessed via WebRTC</li>
+      <li>face-api.js detects faces + computes 128-D embeddings</li>
+      <li>Embeddings sent to Flask backend</li>
+    </ul>
+    <p><strong>Backend (Flask):</strong></p>
+    <ul>
+      <li>Receives embeddings</li>
+      <li>Compares with stored embeddings (Euclidean distance)</li>
+      <li>Returns identity prediction</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Architecture</h2>
+    <ul>
+      <li>Camera → Browser (face-api.js)</li>
+      <li>Embeddings → Flask Backend</li>
+      <li>Flask → Recognition Result → Client</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Results</h2>
+    <ul>
+      <li>Real-time recognition pipeline</li>
+      <li>Stable performance under normal lighting</li>
+      <li>Accuracy depends on angle & clarity</li>
+      <li>Lightweight client-side compute</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Repository</h2>
+    <p>
+      <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
+        GitHub Repository →
+      </a>
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Authors</h2>
+    <p>
+      <strong>Shasvant &amp; Sreepal</strong><br>
+      Grade: <strong>8th</strong>
+    </p>
+  </div>
+
+  <div class="footer">
+    © FacePass — School Project Presentation
+  </div>
+</div>
+
 </body>
 </html>
