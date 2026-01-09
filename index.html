@@ -5,131 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FacePass – Face Recognition</title>
 
-<!-- Prevent GitHub markdown theme -->
 <style>
-  html, body { margin:0 !important; padding:0 !important; }
-  .markdown-body { all: unset !important; }
-</style>
+  html,body{margin:0;padding:0}
+  .markdown-body{all:unset!important}
 
-<style>
-  :root {
-    --bg-dark: #0b0e14;
-    --bg-card: #11151f;
-    --border: #1c2332;
-    --accent: #00d6ff;
-    --text: #d7e2ef;
-    --dim: #8ca0b8;
+  :root{
+    --bg-dark:#0b0e14;
+    --bg-card:#11151f;
+    --border:#1c2332;
+    --accent:#00d6ff;
+    --text:#d7e2ef;
+    --dim:#8ca0b8;
   }
 
-  body {
-    background: var(--bg-dark);
-    color: var(--text);
-    font-family: "Inter", system-ui, sans-serif;
+  body{
+    background:var(--bg-dark);
+    color:var(--text);
+    font-family:"Inter",system-ui,sans-serif;
   }
 
-  /* HERO STRIP */
-  .hero {
-    width: 100%;
-    background: linear-gradient(90deg, #081018, #0e1622);
-    padding: 60px 0 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 26px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 6px 22px rgba(0,0,0,0.45);
+  .hero{
+    width:100%;
+    background:linear-gradient(90deg,#081018,#0e1622);
+    padding:70px 0 50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:26px;
+    border-bottom:1px solid var(--border);
+    box-shadow:0 6px 20px rgba(0,0,0,0.45);
   }
 
-  .bubble {
-    background: #0b0e14;
-    border: 2px solid var(--accent);
-    border-radius: 999px;
-    padding: 18px 46px;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent);
-    cursor: pointer;
-    white-space: nowrap;
-    box-shadow: 0 0 20px rgba(0,214,255,0.3);
+  .bubble{
+    background:#0b0e14;
+    border:2px solid var(--accent);
+    border-radius:999px;
+    padding:18px 48px;
+    font-size:24px;
+    font-weight:700;
+    color:var(--accent);
+    white-space:nowrap;
+    box-shadow:0 0 18px rgba(0,214,255,.3);
+    cursor:pointer;
   }
 
-  .hero-link a {
-    color: var(--accent);
-    font-size: 15px;
-    text-decoration: none;
-    font-weight: 500;
+  .hero-link a{
+    color:var(--accent);
+    font-size:15px;
+    text-decoration:none;
+    font-weight:500;
+  }
+  .hero-link a:hover{text-decoration:underline}
+
+  .main{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin-top:60px;
   }
 
-  .hero-link a:hover { text-decoration: underline; }
-
-  /* MAIN SECTION */
-  .main {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 50px;
+  .wrap{
+    width:1100px;
+    max-width:1100px;
+    padding:0 28px 80px;
   }
 
-  .wrap {
-    width: 1100px;
-    max-width: 1100px;
-    padding: 0 26px 80px;
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:22px;
   }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px;
-    margin-bottom: 22px;
+  h2{
+    color:var(--accent);
+    margin:0 0 12px;
+    font-size:20px;
+    font-weight:600;
   }
 
-  h2 {
-    margin: 0 0 12px 0;
-    color: var(--accent);
-    font-size: 20px;
-    font-weight: 600;
+  .tag{
+    display:inline-block;
+    padding:5px 12px;
+    border:1px solid var(--accent);
+    border-radius:6px;
+    color:var(--accent);
+    font-size:12px;
+    margin:0 6px 6px 0;
   }
 
-  .tag {
-    display: inline-block;
-    padding: 5px 12px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    border-radius: 6px;
-    font-size: 12px;
-    margin-right: 6px;
-    margin-bottom: 6px;
+  ul{margin:6px 0 6px 20px;padding:0}
+
+  .demo-box{
+    border:1px solid var(--accent);
+    background:#000;
+    border-radius:10px;
+    overflow:hidden;
   }
 
-  ul { margin: 6px 0 6px 20px; padding: 0; }
-
-  .demo-box {
-    border: 1px solid var(--accent);
-    background: #000;
-    border-radius: 10px;
-    overflow: hidden;
+  .demo-title{
+    padding:8px 12px;
+    background:#081018;
+    border-bottom:1px solid var(--border);
+    color:var(--dim);
+    font-size:13px;
   }
 
-  .demo-title {
-    padding: 8px 12px;
-    background: #081018;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--dim);
+  .demo-img{
+    width:100%;
+    cursor:pointer;
+    display:block;
   }
 
-  .demo-img {
-    width: 100%;
-    display: block;
-    cursor: pointer;
-  }
-
-  .footer {
-    text-align: center;
-    opacity: .45;
-    margin-top: 40px;
-    font-size: 13px;
+  .footer{
+    text-align:center;
+    opacity:.45;
+    margin-top:40px;
+    font-size:13px;
   }
 </style>
 </head>
@@ -141,9 +134,7 @@
     <div class="bubble">FacePass – Face Recognition</div>
   </a>
   <div class="hero-link">
-    <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
-      GitHub Repository →
-    </a>
+    <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">GitHub Repository →</a>
   </div>
 </div>
 
@@ -153,26 +144,98 @@
     <div class="card">
       <h2>Overview</h2>
       <p>
-        FacePass performs real-time face recognition by extracting embeddings in the browser via <strong>face-api.js</strong>
-        and matching identities through <strong>Flask</strong> on the backend.
+        FacePass is a hybrid real-time facial recognition system. The browser handles detection and embedding extraction using
+        <strong>face-api.js</strong>, while the backend performs identity matching via a lightweight <strong>Flask</strong> service.
+        This allows recognition without GPU hardware on the client.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Motivation</h2>
+      <p>
+        Traditional face recognition pipelines require GPU acceleration or native frameworks. FacePass explores whether modern browser
+        technologies such as WebRTC + WebGL can support real-time recognition on standard consumer devices for educational and lightweight applications.
       </p>
     </div>
 
     <div class="card">
       <h2>Tech Stack</h2>
       <span class="tag">face-api.js</span>
-      <span class="tag">Flask</span>
+      <span class="tag">TensorFlow.js</span>
       <span class="tag">WebRTC</span>
+      <span class="tag">Flask</span>
+      <span class="tag">NumPy</span>
       <span class="tag">Python</span>
       <span class="tag">HTML/CSS</span>
     </div>
 
     <div class="card">
-      <h2>Pipeline</h2>
+      <h2>Architecture</h2>
       <ul>
-        <li><strong>Client:</strong> webcam → detection → embeddings → send to backend</li>
-        <li><strong>Backend:</strong> compare embeddings → match identity → respond</li>
+        <li><strong>Client:</strong> webcam capture via WebRTC</li>
+        <li><strong>Detection:</strong> face-api.js bounding box estimation</li>
+        <li><strong>Embedding:</strong> 128-D face embedding extraction</li>
+        <li><strong>Transport:</strong> embeddings sent to backend over JSON</li>
+        <li><strong>Backend:</strong> Euclidean similarity computation against stored embeddings</li>
+        <li><strong>Output:</strong> identity label + confidence score returned to client</li>
       </ul>
+    </div>
+
+    <div class="card">
+      <h2>Embedding Details</h2>
+      <ul>
+        <li>Representation: <strong>128-D vector</strong></li>
+        <li>Metric: <strong>L2 Euclidean distance</strong></li>
+        <li>Threshold: configurable (default = 0.6)</li>
+        <li>Lower distance → stronger match</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Performance</h2>
+      <ul>
+        <li>Runs at ~15-30 FPS depending on device</li>
+        <li>Operates fully on CPU</li>
+        <li>Stable under common indoor lighting</li>
+        <li>Best accuracy on frontal captures</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul>
+        <li>Reduced accuracy under occlusion (masks, hats)</li>
+        <li>Low light affects detection confidence</li>
+        <li>Mobile devices vary in real-time performance</li>
+        <li>Single-face focus (multi-face tracking planned)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Future Improvements</h2>
+      <ul>
+        <li>Add multi-face tracking</li>
+        <li>Support cosine similarity + classifier-based matching</li>
+        <li>User enrollment interface</li>
+        <li>Adaptive threshold calibration</li>
+        <li>WebGPU acceleration exploration</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Dataset Notes</h2>
+      <p>
+        Embeddings were generated using live webcam captures. More samples per subject across lighting conditions and angles
+        improve robustness and identity separation in embedding space.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Privacy Considerations</h2>
+      <p>
+        Raw video frames remain local to the browser. Only embeddings (numerical vectors) are transmitted to the backend.
+        No cloud inference or 3rd-party APIs are used, reducing privacy risk.
+      </p>
     </div>
 
     <div class="card">
