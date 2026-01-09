@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FacePass – Face Recognition</title>
 
+<!-- KILL GITHUB DEFAULT STYLES -->
+<style>
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .markdown-body {
+    all: unset !important;
+  }
+</style>
+
+<!-- YOUR UI STYLES -->
 <style>
   :root {
     --bg-dark: #0b0e14;
@@ -16,19 +28,18 @@
   }
 
   body {
-    margin: 0;
     background: var(--bg-dark);
-    color: var(--text);
     font-family: "Inter", system-ui, sans-serif;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP STRIP */
   .strip {
     background: linear-gradient(90deg, #081018, #0e1622);
     padding: 12px 24px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid var(--border);
   }
 
@@ -40,8 +51,8 @@
   .strip-links a {
     color: var(--accent);
     text-decoration: none;
-    font-size: 14px;
     margin-left: 18px;
+    font-size: 14px;
   }
 
   .strip-links a:hover {
@@ -55,14 +66,14 @@
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 32px;
     margin-bottom: 6px;
-    color: var(--accent);
     font-weight: 700;
+    color: var(--accent);
   }
 
   .sub {
-    margin-bottom: 26px;
+    margin-bottom: 30px;
     color: var(--dim);
   }
 
@@ -78,6 +89,7 @@
     margin: 0 0 12px 0;
     color: var(--accent);
     font-size: 20px;
+    font-weight: 600;
   }
 
   .tag {
@@ -93,26 +105,27 @@
 
   ul {
     margin: 6px 0 6px 20px;
+    padding: 0;
   }
 
   .demo-box {
     border: 1px solid var(--accent);
     border-radius: 10px;
-    overflow: hidden;
     background: #000;
+    overflow: hidden;
   }
 
   .demo-title {
     padding: 8px 12px;
     background: #081018;
     border-bottom: 1px solid var(--border);
-    color: var(--dim);
     font-size: 13px;
+    color: var(--dim);
   }
 
   .demo-img {
-    width: 100%;
     display: block;
+    width: 100%;
     cursor: pointer;
   }
 
@@ -128,8 +141,8 @@
   .footer {
     text-align: center;
     opacity: .45;
-    font-size: 13px;
     margin-top: 40px;
+    font-size: 13px;
   }
 </style>
 </head>
@@ -146,12 +159,13 @@
 <div class="wrap">
 
   <h1>FacePass – Face Recognition</h1>
-  <div class="sub">Browser-based facial recognition using client embeddings and Flask matching</div>
+  <div class="sub">Browser-based facial recognition using client embeddings + Flask matching</div>
 
   <div class="card">
     <h2>Overview</h2>
     <p>
-      FacePass is a hybrid facial recognition system where the browser handles detection and feature extraction, while the backend performs identity matching. The result is real-time recognition without needing GPU acceleration on the client.
+      FacePass performs real-time face recognition by extracting embeddings in the browser using
+      <strong>face-api.js</strong> and matching identities server-side using <strong>Flask</strong>.
     </p>
   </div>
 
@@ -167,23 +181,23 @@
   <div class="card">
     <h2>Pipeline</h2>
     <ul>
-      <li><strong>Browser:</strong> webcam capture → face detection → embedding extraction</li>
-      <li><strong>Backend:</strong> embedding comparison → identity matching → response</li>
+      <li><strong>Client:</strong> webcam → detection → embedding extraction → send to backend</li>
+      <li><strong>Backend:</strong> compare embeddings → match identity → return result</li>
     </ul>
   </div>
 
   <div class="card">
     <h2>Results</h2>
     <ul>
-      <li>Live recognition on standard hardware</li>
+      <li>Real-time recognition on standard hardware</li>
       <li>Stable under normal lighting</li>
-      <li>Front-facing images boost accuracy</li>
+      <li>Front-facing training images improve accuracy</li>
     </ul>
   </div>
 
   <div class="card">
     <h2>Authors</h2>
-    <p><strong>Shasvant & Sreepal</strong><br>Grade: <strong>8th</strong></p>
+    <p><strong>Shasvant &amp; Sreepal</strong><br>Grade: 8th</p>
   </div>
 
   <div class="card">
