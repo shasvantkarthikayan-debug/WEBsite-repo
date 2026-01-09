@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FacePass – Face Recognition</title>
 
+<!-- Prevent GitHub markdown theme -->
 <style>
-  html, body { margin: 0 !important; padding: 0 !important; }
+  html, body { margin:0 !important; padding:0 !important; }
   .markdown-body { all: unset !important; }
+</style>
 
+<style>
   :root {
     --bg-dark: #0b0e14;
     --bg-card: #11151f;
@@ -24,43 +27,47 @@
     font-family: "Inter", system-ui, sans-serif;
   }
 
-  .strip {
+  /* HERO STRIP */
+  .hero {
+    width: 100%;
     background: linear-gradient(90deg, #081018, #0e1622);
-    padding: 12px 24px;
+    padding: 60px 0 40px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
     border-bottom: 1px solid var(--border);
-  }
-
-  .strip a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 14px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.45);
   }
 
   .bubble {
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, #081018, #0e1622);
+    background: #0b0e14;
     border: 2px solid var(--accent);
     border-radius: 999px;
-    padding: 16px 40px;
+    padding: 18px 46px;
     font-size: 24px;
     font-weight: 700;
     color: var(--accent);
     cursor: pointer;
     white-space: nowrap;
-    box-shadow: 0 0 20px rgba(0, 214, 255, 0.25);
-    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0,214,255,0.3);
   }
 
+  .hero-link a {
+    color: var(--accent);
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .hero-link a:hover { text-decoration: underline; }
+
+  /* MAIN SECTION */
   .main {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 150px;
+    margin-top: 50px;
   }
 
   .wrap {
@@ -80,6 +87,7 @@
   h2 {
     margin: 0 0 12px 0;
     color: var(--accent);
+    font-size: 20px;
     font-weight: 600;
   }
 
@@ -94,9 +102,7 @@
     margin-bottom: 6px;
   }
 
-  ul {
-    margin: 6px 0 6px 20px;
-  }
+  ul { margin: 6px 0 6px 20px; padding: 0; }
 
   .demo-box {
     border: 1px solid var(--accent);
@@ -109,8 +115,8 @@
     padding: 8px 12px;
     background: #081018;
     border-bottom: 1px solid var(--border);
-    color: var(--dim);
     font-size: 13px;
+    color: var(--dim);
   }
 
   .demo-img {
@@ -130,13 +136,16 @@
 
 <body>
 
-<div class="strip">
-  <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">GitHub</a>
+<div class="hero">
+  <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
+    <div class="bubble">FacePass – Face Recognition</div>
+  </a>
+  <div class="hero-link">
+    <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
+      GitHub Repository →
+    </a>
+  </div>
 </div>
-
-<a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
-  <div class="bubble">FacePass – Face Recognition</div>
-</a>
 
 <div class="main">
   <div class="wrap">
@@ -144,8 +153,8 @@
     <div class="card">
       <h2>Overview</h2>
       <p>
-        FacePass performs real-time face recognition by extracting embeddings in the browser using <strong>face-api.js</strong>
-        and matching identities via <strong>Flask</strong>.
+        FacePass performs real-time face recognition by extracting embeddings in the browser via <strong>face-api.js</strong>
+        and matching identities through <strong>Flask</strong> on the backend.
       </p>
     </div>
 
