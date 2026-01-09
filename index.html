@@ -2,313 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FacePass — Face Recognition Web App</title>
+  <title>FacePass — Face Recognition Project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" href="favicon.png">
-
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: #050818;
-      color: #f9fafb;
+      font-family: system-ui, sans-serif;
+      background: #0b0e17;
+      color: #e5e7eb;
       line-height: 1.6;
     }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes subtleFloat {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-      100% { transform: translateY(0); }
-    }
-
-    .cover {
-      width: 100%;
-      padding: 50px 20px;
-      background: linear-gradient(135deg, #0ea5e9, #1e3a8a);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      color: white;
-      border-bottom: 4px solid #38bdf8;
-      animation: fadeDown 0.8s ease-out;
-    }
-
-    .logo-circle {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 18px;
-      animation: subtleFloat 3s ease-in-out infinite;
-    }
-
-    .logo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .cover h1 {
-      font-size: 34px;
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
       font-weight: 800;
+      color: #f1f5f9;
     }
 
-    .cover p {
-      font-size: 16px;
-      opacity: 0.9;
-      margin-top: 8px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(5, 8, 24, 0.92);
-      border-bottom: 1px solid #111827;
-    }
-
-    .nav {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
+    h2 {
+      font-size: 22px;
+      margin-top: 32px;
+      margin-bottom: 8px;
       font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 18px;
+      color: #f1f5f9;
     }
 
-    .logo span { color: #38bdf8; }
-
-    nav a {
-      margin-left: 16px;
-      text-decoration: none;
-      font-size: 14px;
-      color: #9ca3af;
-      position: relative;
-      transition: color 0.2s ease;
+    .subtitle {
+      opacity: 0.8;
+      margin-bottom: 20px;
     }
 
-    nav a:hover { color: #e5e7eb; }
-
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 24px 20px 40px;
-    }
-
-    section { margin-top: 40px; animation: fadeUp 0.7s ease-out; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 2fr 1.5fr;
-      gap: 24px;
-      align-items: center;
+    .section {
       margin-top: 24px;
     }
 
-    .pill {
-      display: inline-block;
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid #1f2933;
-      color: #9ca3af;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    h1 { font-size: 32px; margin-bottom: 10px; }
-    h1 span { color: #38bdf8; }
-
-    .subtitle {
-      color: #9ca3af;
-      font-size: 14px;
-      margin-top: 8px;
-    }
-
-    h2 { font-size: 22px; margin-bottom: 6px; }
-
-    .underline {
-      width: 40px;
-      height: 2px;
-      background: #38bdf8;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    .card {
-      border-radius: 16px;
-      border: 1px solid #111827;
-      background: radial-gradient(circle at top, #0b1120, #020617);
-      padding: 16px 18px;
-      font-size: 13px;
-      color: #d1d5db;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-      margin-top: 12px;
-    }
-
-    .video-container {
+    .thumb {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      max-width: 700px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      cursor: pointer;
     }
 
-    .video-container video {
-      width: 90%;
-      max-width: 720px;
-      border-radius: 14px;
-      border: 1px solid #111827;
-      background: #000;
+    .inline-block {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: #1e293b;
+      color: #93c5fd;
+      margin-right: 6px;
+      margin-bottom: 6px;
     }
 
     footer {
-      border-top: 1px solid #111827;
-      padding: 12px 20px 18px;
       text-align: center;
-      font-size: 11px;
-      color: #6b7280;
-      margin-top: 32px;
+      opacity: 0.5;
+      margin-top: 40px;
+      padding-bottom: 20px;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
-
-  <div class="cover">
-    <div class="logo-circle">
-      <img src="logo-fr.png" alt="FacePass Logo">
-    </div>
+  <div class="container">
     <h1>FacePass</h1>
-    <p>Face Recognition Web App powered by face-api.js & Flask</p>
-  </div>
+    <div class="subtitle">Face Recognition System using face-api.js & Flask</div>
 
-  <header>
-    <div class="nav">
-      <div class="logo">Project: <span>FacePass</span></div>
-      <nav>
-        <a href="#intro">Intro</a>
-        <a href="#working">Working</a>
-        <a href="#demo">Demo</a>
-        <a href="#result">Results</a>
-        <a href="#about">About</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <section id="intro" class="hero">
-      <div>
-        <div class="pill">Flask · face-api.js · WebRTC</div>
-        <h1>Face Recognition <span>Overview</span></h1>
-        <p class="subtitle">
-          FacePass runs directly in the browser using face-api.js for face detection & embedding, while Flask handles recognition on the backend.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Project Summary</h3>
-        <p>
-          The browser streams video and extracts face embeddings, which are sent to Flask. Flask compares them to stored embeddings and returns the predicted identity.
-        </p>
-      </div>
-    </section>
-
-    <section id="working">
-      <h2>How It Works</h2>
-      <div class="underline"></div>
-
-      <div class="two-col">
-        <div>
-          <h3>1. Browser (Client)</h3>
-          <ul>
-            <li>Webcam via WebRTC</li>
-            <li>face-api.js processes frames</li>
-            <li>Embeddings extracted</li>
-            <li>Sent to Flask backend</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>2. Flask (Backend)</h3>
-          <ul>
-            <li>Receives embedding vectors</li>
-            <li>Compares to stored embeddings</li>
-            <li>Finds best match</li>
-            <li>Returns identity</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="demo">
-      <h2>Live Demo</h2>
-      <div class="underline"></div>
-      <p>This video shows FacePass running in real time.</p>
-
-      <div class="video-container">
-        <video controls autoplay muted loop>
-          <source src="working.mp4" type="video/mp4">
-        </video>
-      </div>
-    </section>
-
-    <section id="result">
-      <h2>Results</h2>
-      <div class="underline"></div>
-      <ul>
-        <li>Real-time detection & recognition</li>
-        <li>Works best with front-facing images</li>
-        <li>Performs well in normal lighting</li>
-        <li>Accuracy drops in low light</li>
-      </ul>
-    </section>
-
-    <section id="about">
-      <h2>About the Students</h2>
-      <div class="underline"></div>
+    <div class="section">
+      <h2>Overview</h2>
       <p>
-        Project by: <strong>Shasvant & Sreepal</strong><br>
+        FacePass is a lightweight browser-based facial recognition system.
+        The web browser performs live face detection using <strong>face-api.js</strong>
+        while identity matching is handled by a <strong>Flask</strong> backend using stored embeddings.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Tech Stack</h2>
+      <div class="inline-block">face-api.js</div>
+      <div class="inline-block">Flask</div>
+      <div class="inline-block">WebRTC</div>
+      <div class="inline-block">Python</div>
+      <div class="inline-block">HTML/CSS</div>
+    </div>
+
+    <div class="section">
+      <h2>Architecture</h2>
+      <p><strong>Client (Browser):</strong></p>
+      <ul>
+        <li>Accesses webcam via WebRTC</li>
+        <li>Detects face and computes embeddings</li>
+        <li>Sends embedding vectors to backend</li>
+      </ul>
+      <p><strong>Backend (Flask):</strong></p>
+      <ul>
+        <li>Receives embeddings</li>
+        <li>Compares with stored values</li>
+        <li>Returns predicted identity</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Demo</h2>
+      <a href="working.mp4" target="_blank">
+        <img src="thumbnail.png" alt="Demo Thumbnail" class="thumb">
+      </a>
+      <p style="opacity:0.6;font-size:13px;text-align:center;">
+        Click thumbnail to view the project demo.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Results</h2>
+      <ul>
+        <li>Real-time face detection in browser</li>
+        <li>Recognition accuracy depends on lighting conditions</li>
+        <li>Works with stored face embeddings</li>
+        <li>Low computational overhead in client</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Authors</h2>
+      <p>
+        Project by <strong>Shasvant &amp; Sreepal</strong><br>
         Grade: <strong>8th</strong>
       </p>
-    </section>
+    </div>
 
-  </main>
-
-  <footer>
-    © FacePass — School Project
-  </footer>
-
+    <footer>
+      © FacePass — School Project Presentation
+    </footer>
+  </div>
 </body>
 </html>
