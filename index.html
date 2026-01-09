@@ -66,6 +66,11 @@
       margin-bottom: 6px;
     }
 
+    ul {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
     a {
       color: #60a5fa;
       text-decoration: none;
@@ -93,14 +98,13 @@
     <div class="section">
       <h2>Overview</h2>
       <p>
-        FacePass is a browser-based facial recognition system.
-        The browser performs face detection and embedding using <strong>face-api.js</strong>,
-        while identity recognition is handled by a <strong>Flask</strong> backend.
+        FacePass is a browser-based face recognition system. The client uses <strong>face-api.js</strong>
+        for face detection & embedding, while a <strong>Flask</strong> backend performs identity matching using stored face embeddings.
       </p>
     </div>
 
     <div class="section">
-      <h2>Stack</h2>
+      <h2>Tech Stack</h2>
       <div class="inline-block">face-api.js</div>
       <div class="inline-block">Flask</div>
       <div class="inline-block">WebRTC</div>
@@ -119,32 +123,54 @@
     </div>
 
     <div class="section">
-      <h2>Architecture</h2>
-      <p><strong>Browser:</strong></p>
+      <h2>How It Works</h2>
+      <p>
+        FacePass splits processing between the browser and backend for efficient real-time face recognition:
+      </p>
+      <p><strong>Client (Browser):</strong></p>
       <ul>
-        <li>Webcam via WebRTC</li>
-        <li>face-api.js computes embeddings</li>
-        <li>Embeddings sent to Flask backend</li>
+        <li>Accesses webcam using WebRTC</li>
+        <li>Detects face regions via face-api.js</li>
+        <li>Generates 128-D face embeddings</li>
+        <li>Sends embeddings to Flask backend</li>
       </ul>
+
       <p><strong>Backend (Flask):</strong></p>
       <ul>
-        <li>Compares embeddings with stored data</li>
+        <li>Receives embedding vectors</li>
+        <li>Compares with stored embeddings</li>
+        <li>Computes Euclidean distance similarity</li>
         <li>Returns predicted identity</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Architecture</h2>
+      <p><strong>Pipeline:</strong></p>
+      <ul>
+        <li>Camera → Embedding (face-api.js)</li>
+        <li>Embedding → Recognition (Flask)</li>
+        <li>Flask → Recognition result returned to client</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>Results</h2>
       <ul>
-        <li>Real-time detection and recognition</li>
-        <li>Works best with clear front-facing images</li>
-        <li>Performs well in normal lighting conditions</li>
+        <li>Real-time detection & recognition</li>
+        <li>Stable performance under normal lighting</li>
+        <li>Accuracy depends on face angle & clarity</li>
+        <li>Low compute load on client-side</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>Repository</h2>
-      <p><a href="https://github.com/shasvantkarthikayan-debug/facepass" target="_blank">GitHub Repository →</a></p>
+      <p>
+        <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
+          GitHub Repository →
+        </a>
+      </p>
     </div>
 
     <div class="section">
