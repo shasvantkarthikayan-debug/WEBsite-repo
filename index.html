@@ -5,11 +5,9 @@
   <title>FacePass — Face Recognition Web App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
-    /* your original CSS unchanged */
     * {
       margin: 0;
       padding: 0;
@@ -17,9 +15,7 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background: #050818;
@@ -69,13 +65,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .cover h1 {
       font-size: 34px;
       font-weight: 800;
-      letter-spacing: 1px;
     }
 
     .cover p {
@@ -108,9 +102,7 @@
       font-size: 18px;
     }
 
-    .logo span {
-      color: #38bdf8;
-    }
+    .logo span { color: #38bdf8; }
 
     nav a {
       margin-left: 16px;
@@ -121,25 +113,7 @@
       transition: color 0.2s ease;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: #38bdf8;
-      transition: width 0.2s ease;
-    }
-
-    nav a:hover {
-      color: #e5e7eb;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover { color: #e5e7eb; }
 
     main {
       max-width: 1000px;
@@ -147,14 +121,11 @@
       padding: 24px 20px 40px;
     }
 
-    section {
-      margin-top: 40px;
-      animation: fadeUp 0.7s ease-out;
-    }
+    section { margin-top: 40px; animation: fadeUp 0.7s ease-out; }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      grid-template-columns: 2fr 1.5fr;
       gap: 24px;
       align-items: center;
       margin-top: 24px;
@@ -169,13 +140,175 @@
       color: #9ca3af;
       margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    h1 { font-size: 32px; margin-bottom: 10px; }
+    h1 span { color: #38bdf8; }
+
+    .subtitle {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-top: 8px;
     }
 
-    h1 span {
-      color: #38bdf8;
+    h2 { font-size: 22px; margin-bottom: 6px; }
+
+    .underline {
+      width: 40px;
+      height: 2px;
+      background: #38bdf8;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid #111827;
+      background: radial-gradient(circle at top, #0b1120, #020617);
+      padding: 16px 18px;
+      font-size: 13px;
+      color: #d1d5db;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .video-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .video-container video {
+      width: 90%;
+      max-width: 720px;
+      border-radius: 14px;
+      border: 1px solid #111827;
+      background: #000;
+    }
+
+    footer {
+      border-top: 1px solid #111827;
+      padding: 12px 20px 18px;
+      text-align: center;
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cover">
+    <div class="logo-circle">
+      <img src="logo-fr.png" alt="FacePass Logo">
+    </div>
+    <h1>FacePass</h1>
+    <p>Face Recognition Web App powered by face-api.js & Flask</p>
+  </div>
+
+  <header>
+    <div class="nav">
+      <div class="logo">Project: <span>FacePass</span></div>
+      <nav>
+        <a href="#intro">Intro</a>
+        <a href="#working">Working</a>
+        <a href="#demo">Demo</a>
+        <a href="#result">Results</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="intro" class="hero">
+      <div>
+        <div class="pill">Flask · face-api.js · WebRTC</div>
+        <h1>Face Recognition <span>Overview</span></h1>
+        <p class="subtitle">
+          FacePass runs directly in the browser using face-api.js for face detection & embedding, while Flask handles recognition on the backend.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Project Summary</h3>
+        <p>
+          The browser streams video and extracts face embeddings, which are sent to Flask. Flask compares them to stored embeddings and returns the predicted identity.
+        </p>
+      </div>
+    </section>
+
+    <section id="working">
+      <h2>How It Works</h2>
+      <div class="underline"></div>
+
+      <div class="two-col">
+        <div>
+          <h3>1. Browser (Client)</h3>
+          <ul>
+            <li>Webcam via WebRTC</li>
+            <li>face-api.js processes frames</li>
+            <li>Embeddings extracted</li>
+            <li>Sent to Flask backend</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>2. Flask (Backend)</h3>
+          <ul>
+            <li>Receives embedding vectors</li>
+            <li>Compares to stored embeddings</li>
+            <li>Finds best match</li>
+            <li>Returns identity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <h2>Live Demo</h2>
+      <div class="underline"></div>
+      <p>This video shows FacePass running in real time.</p>
+
+      <div class="video-container">
+        <video controls autoplay muted loop>
+          <source src="working.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section id="result">
+      <h2>Results</h2>
+      <div class="underline"></div>
+      <ul>
+        <li>Real-time detection & recognition</li>
+        <li>Works best with front-facing images</li>
+        <li>Performs well in normal lighting</li>
+        <li>Accuracy drops in low light</li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>About the Students</h2>
+      <div class="underline"></div>
+      <p>
+        Project by: <strong>Shasvant & Sreepal</strong><br>
+        Grade: <strong>8th</strong>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © FacePass — School Project
+  </footer>
+
+</body>
+</html>
