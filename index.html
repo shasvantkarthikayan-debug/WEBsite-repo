@@ -5,18 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FacePass – Face Recognition</title>
 
-<!-- KILL GITHUB DEFAULT STYLES -->
+<!-- Prevent GitHub Markdown overrides -->
 <style>
-  body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .markdown-body {
-    all: unset !important;
-  }
+  html, body { margin:0 !important; padding:0 !important; }
+  .markdown-body { all: unset !important; }
 </style>
 
-<!-- YOUR UI STYLES -->
 <style>
   :root {
     --bg-dark: #0b0e14;
@@ -29,52 +23,62 @@
 
   body {
     background: var(--bg-dark);
-    font-family: "Inter", system-ui, sans-serif;
     color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Top strip */
   .strip {
     background: linear-gradient(90deg, #081018, #0e1622);
     padding: 12px 24px;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid var(--border);
   }
 
-  .strip-title {
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .strip-links a {
+  .strip a {
     color: var(--accent);
     text-decoration: none;
-    margin-left: 18px;
     font-size: 14px;
   }
 
-  .strip-links a:hover {
-    text-decoration: underline;
+  /* Floating Bubble */
+  .bubble {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #081018, #0e1622);
+    border: 2px solid var(--accent);
+    border-radius: 999px;
+    padding: 14px 34px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 214, 255, 0.25);
+  }
+
+  .bubble:hover {
+    box-shadow: 0 0 32px rgba(0, 214, 255, 0.45);
+  }
+
+  /* Layout Centering */
+  .main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 130px;
   }
 
   .wrap {
+    width: 1100px;
     max-width: 1100px;
-    margin: auto;
-    padding: 36px 26px 80px;
-  }
-
-  h1 {
-    font-size: 32px;
-    margin-bottom: 6px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .sub {
-    margin-bottom: 30px;
-    color: var(--dim);
+    padding: 0 26px 80px;
   }
 
   .card {
@@ -124,8 +128,8 @@
   }
 
   .demo-img {
-    display: block;
     width: 100%;
+    display: block;
     cursor: pointer;
   }
 
@@ -150,68 +154,59 @@
 <body>
 
 <div class="strip">
-  <div class="strip-title">FacePass</div>
-  <div class="strip-links">
-    <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">GitHub</a>
-  </div>
+  <a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">GitHub</a>
 </div>
 
-<div class="wrap">
+<a href="https://github.com/shasvantkarthikayan-debug/face-recognition" target="_blank">
+  <div class="bubble">FacePass – Face Recognition</div>
+</a>
 
-  <h1>FacePass – Face Recognition</h1>
-  <div class="sub">Browser-based facial recognition using client embeddings + Flask matching</div>
+<div class="main">
+  <div class="wrap">
 
-  <div class="card">
-    <h2>Overview</h2>
-    <p>
-      FacePass performs real-time face recognition by extracting embeddings in the browser using
-      <strong>face-api.js</strong> and matching identities server-side using <strong>Flask</strong>.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>Tech Stack</h2>
-    <span class="tag">face-api.js</span>
-    <span class="tag">Flask</span>
-    <span class="tag">WebRTC</span>
-    <span class="tag">Python</span>
-    <span class="tag">HTML/CSS</span>
-  </div>
-
-  <div class="card">
-    <h2>Pipeline</h2>
-    <ul>
-      <li><strong>Client:</strong> webcam → detection → embedding extraction → send to backend</li>
-      <li><strong>Backend:</strong> compare embeddings → match identity → return result</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Results</h2>
-    <ul>
-      <li>Real-time recognition on standard hardware</li>
-      <li>Stable under normal lighting</li>
-      <li>Front-facing training images improve accuracy</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Authors</h2>
-    <p><strong>Shasvant &amp; Sreepal</strong><br>Grade: 8th</p>
-  </div>
-
-  <div class="card">
-    <h2>Demo</h2>
-    <div class="demo-box">
-      <div class="demo-title">FacePass Demo</div>
-      <a href="https://youtu.be/CW7YAbGvszA" target="_blank">
-        <img class="demo-img" src="https://img.youtube.com/vi/CW7YAbGvszA/maxresdefault.jpg">
-      </a>
+    <div class="card">
+      <h2>Overview</h2>
+      <p>
+        FacePass performs real-time face recognition by extracting embeddings in the browser using <strong>face-api.js</strong>
+        and matching identities server-side using <strong>Flask</strong>. This allows recognition without GPU on the client.
+      </p>
     </div>
+
+    <div class="card">
+      <h2>Tech Stack</h2>
+      <span class="tag">face-api.js</span>
+      <span class="tag">Flask</span>
+      <span class="tag">WebRTC</span>
+      <span class="tag">Python</span>
+      <span class="tag">HTML/CSS</span>
+    </div>
+
+    <div class="card">
+      <h2>Pipeline</h2>
+      <ul>
+        <li><strong>Client:</strong> webcam → detection → embedding extraction → send to backend</li>
+        <li><strong>Backend:</strong> compare embeddings → match identity → return result</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Authors</h2>
+      <p><strong>Shasvant &amp; Sreepal</strong><br>Grade: 8th</p>
+    </div>
+
+    <div class="card">
+      <h2>Demo</h2>
+      <div class="demo-box">
+        <div class="demo-title">FacePass Demo</div>
+        <a href="https://youtu.be/CW7YAbGvszA" target="_blank">
+          <img class="demo-img" src="https://img.youtube.com/vi/CW7YAbGvszA/maxresdefault.jpg">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">© FacePass — School Project Presentation</div>
+
   </div>
-
-  <div class="footer">© FacePass — School Project Presentation</div>
-
 </div>
 
 </body>
