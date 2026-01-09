@@ -5,13 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FacePass – Face Recognition</title>
 
-<!-- Prevent GitHub Markdown overrides -->
 <style>
-  html, body { margin:0 !important; padding:0 !important; }
+  html, body { margin: 0 !important; padding: 0 !important; }
   .markdown-body { all: unset !important; }
-</style>
 
-<style>
   :root {
     --bg-dark: #0b0e14;
     --bg-card: #11151f;
@@ -25,16 +22,13 @@
     background: var(--bg-dark);
     color: var(--text);
     font-family: "Inter", system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
   }
 
-  /* Top strip */
   .strip {
     background: linear-gradient(90deg, #081018, #0e1622);
     padding: 12px 24px;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     border-bottom: 1px solid var(--border);
   }
 
@@ -44,7 +38,6 @@
     font-size: 14px;
   }
 
-  /* Floating Bubble */
   .bubble {
     position: absolute;
     top: 70px;
@@ -53,26 +46,21 @@
     background: linear-gradient(90deg, #081018, #0e1622);
     border: 2px solid var(--accent);
     border-radius: 999px;
-    padding: 14px 34px;
-    font-size: 20px;
-    font-weight: 600;
+    padding: 16px 40px;
+    font-size: 24px;
+    font-weight: 700;
     color: var(--accent);
     cursor: pointer;
     white-space: nowrap;
-    z-index: 1000;
     box-shadow: 0 0 20px rgba(0, 214, 255, 0.25);
+    z-index: 1000;
   }
 
-  .bubble:hover {
-    box-shadow: 0 0 32px rgba(0, 214, 255, 0.45);
-  }
-
-  /* Layout Centering */
   .main {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 130px;
+    margin-top: 150px;
   }
 
   .wrap {
@@ -92,7 +80,6 @@
   h2 {
     margin: 0 0 12px 0;
     color: var(--accent);
-    font-size: 20px;
     font-weight: 600;
   }
 
@@ -109,13 +96,12 @@
 
   ul {
     margin: 6px 0 6px 20px;
-    padding: 0;
   }
 
   .demo-box {
     border: 1px solid var(--accent);
-    border-radius: 10px;
     background: #000;
+    border-radius: 10px;
     overflow: hidden;
   }
 
@@ -123,23 +109,14 @@
     padding: 8px 12px;
     background: #081018;
     border-bottom: 1px solid var(--border);
-    font-size: 13px;
     color: var(--dim);
+    font-size: 13px;
   }
 
   .demo-img {
     width: 100%;
     display: block;
     cursor: pointer;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 
   .footer {
@@ -168,7 +145,7 @@
       <h2>Overview</h2>
       <p>
         FacePass performs real-time face recognition by extracting embeddings in the browser using <strong>face-api.js</strong>
-        and matching identities server-side using <strong>Flask</strong>. This allows recognition without GPU on the client.
+        and matching identities via <strong>Flask</strong>.
       </p>
     </div>
 
@@ -184,8 +161,8 @@
     <div class="card">
       <h2>Pipeline</h2>
       <ul>
-        <li><strong>Client:</strong> webcam → detection → embedding extraction → send to backend</li>
-        <li><strong>Backend:</strong> compare embeddings → match identity → return result</li>
+        <li><strong>Client:</strong> webcam → detection → embeddings → send to backend</li>
+        <li><strong>Backend:</strong> compare embeddings → match identity → respond</li>
       </ul>
     </div>
 
