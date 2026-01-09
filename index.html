@@ -66,6 +66,15 @@
       margin-bottom: 6px;
     }
 
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       opacity: 0.5;
@@ -84,14 +93,14 @@
     <div class="section">
       <h2>Overview</h2>
       <p>
-        FacePass is a lightweight browser-based facial recognition system.
-        The web browser performs live face detection using <strong>face-api.js</strong>
-        while identity matching is handled by a <strong>Flask</strong> backend using stored embeddings.
+        FacePass is a browser-based facial recognition system.
+        The browser performs face detection and embedding using <strong>face-api.js</strong>,
+        while identity recognition is handled by a <strong>Flask</strong> backend.
       </p>
     </div>
 
     <div class="section">
-      <h2>Tech Stack</h2>
+      <h2>Stack</h2>
       <div class="inline-block">face-api.js</div>
       <div class="inline-block">Flask</div>
       <div class="inline-block">WebRTC</div>
@@ -100,39 +109,42 @@
     </div>
 
     <div class="section">
+      <h2>Demo</h2>
+      <a href="https://youtu.be/CW7YAbGvszA" target="_blank">
+        <img src="https://img.youtube.com/vi/CW7YAbGvszA/maxresdefault.jpg" alt="FacePass Demo" class="thumb">
+      </a>
+      <p style="opacity:0.6;font-size:13px;text-align:center;">
+        Click to watch the demo on YouTube.
+      </p>
+    </div>
+
+    <div class="section">
       <h2>Architecture</h2>
-      <p><strong>Client (Browser):</strong></p>
+      <p><strong>Browser:</strong></p>
       <ul>
-        <li>Accesses webcam via WebRTC</li>
-        <li>Detects face and computes embeddings</li>
-        <li>Sends embedding vectors to backend</li>
+        <li>Webcam via WebRTC</li>
+        <li>face-api.js computes embeddings</li>
+        <li>Embeddings sent to Flask backend</li>
       </ul>
       <p><strong>Backend (Flask):</strong></p>
       <ul>
-        <li>Receives embeddings</li>
-        <li>Compares with stored values</li>
+        <li>Compares embeddings with stored data</li>
         <li>Returns predicted identity</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>Demo</h2>
-      <a href="working.mp4" target="_blank">
-        <img src="thumbnail.png" alt="Demo Thumbnail" class="thumb">
-      </a>
-      <p style="opacity:0.6;font-size:13px;text-align:center;">
-        Click thumbnail to view the project demo.
-      </p>
+      <h2>Results</h2>
+      <ul>
+        <li>Real-time detection and recognition</li>
+        <li>Works best with clear front-facing images</li>
+        <li>Performs well in normal lighting conditions</li>
+      </ul>
     </div>
 
     <div class="section">
-      <h2>Results</h2>
-      <ul>
-        <li>Real-time face detection in browser</li>
-        <li>Recognition accuracy depends on lighting conditions</li>
-        <li>Works with stored face embeddings</li>
-        <li>Low computational overhead in client</li>
-      </ul>
+      <h2>Repository</h2>
+      <p><a href="https://github.com/shasvantkarthikayan-debug/facepass" target="_blank">GitHub Repository →</a></p>
     </div>
 
     <div class="section">
